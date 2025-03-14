@@ -75,7 +75,7 @@ public class ClientDeathLogStorage extends BaseDeathLogStorage implements Direct
             deathInfo.setProperty(DeathInfo.LOCATION_KEY, new LocationProperty(client.getCurrentServerEntry().name, true));
         }
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy, hh:mm a");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMMM yyyy, hh:mm a");
         deathInfo.setProperty(DeathInfo.TIME_OF_DEATH_KEY, new StringProperty("deathlog.deathinfoproperty.time_of_death", dateFormat.format(new Date())));
         deathInfo.setProperty(DeathInfo.DIMENSION_KEY, new StringProperty("deathlog.deathinfoproperty.dimension", player.getWorld().getRegistryKey().getValue().toString()));
 
