@@ -21,6 +21,7 @@ import java.nio.file.Files;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
+import java.text.SimpleDateFormat;
 
 public class ClientDeathLogStorage extends BaseDeathLogStorage implements DirectDeathLogStorage {
 
@@ -64,8 +65,9 @@ public class ClientDeathLogStorage extends BaseDeathLogStorage implements Direct
 
         deathInfo.setProperty(DeathInfo.INVENTORY_KEY, new InventoryProperty(player.getInventory()));
 
+        deathInfo.setProperty(DeathInfo.SCORE_KEY, new ScoreProperty(player.getScore(), player.experienceLevel, player.experienceProgress, player.totalExperience));
+        deathInfo.setProperty(DeathInfo.DEATH_MESSAGE_KEY, new StringProperty("deathlog.deathinfoproperty.death_message", deathMessage.getString()));
         deathInfo.setProperty(DeathInfo.COORDINATES_KEY, new CoordinatesProperty(player.getBlockPos()));
-        deathInfo.setProperty(DeathInfo.DIMENSION_KEY, new StringProperty("deathlog.deathinfoproperty.dimension", player.getWorld().getRegistryKey().getValue().toString()));
 
         if (client.isInSingleplayer()) {
             deathInfo.setProperty(DeathInfo.LOCATION_KEY, new LocationProperty(((MinecraftServerAccessor) client.getServer()).deathlog_getSession().getDirectoryName(), false));
@@ -73,9 +75,9 @@ public class ClientDeathLogStorage extends BaseDeathLogStorage implements Direct
             deathInfo.setProperty(DeathInfo.LOCATION_KEY, new LocationProperty(client.getCurrentServerEntry().name, true));
         }
 
-        deathInfo.setProperty(DeathInfo.SCORE_KEY, new ScoreProperty(player.getScore(), player.experienceLevel, player.experienceProgress, player.totalExperience));
-        deathInfo.setProperty(DeathInfo.DEATH_MESSAGE_KEY, new StringProperty("deathlog.deathinfoproperty.death_message", deathMessage.getString()));
-        deathInfo.setProperty(DeathInfo.TIME_OF_DEATH_KEY, new StringProperty("deathlog.deathinfoproperty.time_of_death", new Date().toString()));
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy, hh:mm a");
+        deathInfo.setProperty(DeathInfo.TIME_OF_DEATH_KEY, new StringProperty("deathlog.deathinfoproperty.time_of_death", dateFormat.format(new Date())));
+        deathInfo.setProperty(DeathInfo.DIMENSION_KEY, new StringProperty("deathlog.deathinfoproperty.dimension", player.getWorld().getRegistryKey().getValue().toString()));
 
         SpecialPropertyProvider.apply(deathInfo, player);
         DeathInfoCreatedCallback.EVENT.invoker().event(deathInfo);

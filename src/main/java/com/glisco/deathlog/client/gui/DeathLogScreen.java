@@ -174,19 +174,19 @@ public class DeathLogScreen extends BaseUIModelScreen<FlowLayout> {
                     .child(leftColumn = Containers.verticalFlow(Sizing.content(), Sizing.content()))
                     .child(rightColumn = Containers.verticalFlow(Sizing.content(), Sizing.content())));
 
-            leftColumn.gap(2);
+            leftColumn.gap(5);
             for (var text : info.getLeftColumnText()) {
                 leftColumn.child(Components.label(text).shadow(true));
             }
 
-            rightColumn.gap(2).margins(Insets.left(5));
+            rightColumn.gap(5).margins(Insets.left(10));
             for (var text : info.getRightColumnText()) {
                 rightColumn.child(Components.label(text));
             }
 
             FlowLayout itemContainer;
             panel.child(itemContainer = Containers.verticalFlow(Sizing.content(), Sizing.content()));
-            itemContainer.margins(Insets.top(5));
+            itemContainer.margins(Insets.top(15));
 
             itemContainer.child(Components.texture(Identifier.of("deathlog", "textures/gui/inventory_overlay.png"), 0, 0, 210, 107));
 
@@ -224,6 +224,7 @@ public class DeathLogScreen extends BaseUIModelScreen<FlowLayout> {
 
         if (!stack.isEmpty()) {
             var tooltip = stack.getTooltip(Item.TooltipContext.DEFAULT, client.player, client.options.advancedItemTooltips ? TooltipType.ADVANCED : TooltipType.BASIC);
+            tooltip.add(Text.literal(""));
             tooltip.add(Text.translatable(this.client.player.isCreative() ? "text.deathlog.action.give_item.spawn" : "text.deathlog.action.give_item.copy_give"));
             item.tooltip(tooltip);
 

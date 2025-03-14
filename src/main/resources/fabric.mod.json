@@ -3,8 +3,9 @@
   "id": "deathlog",
   "version": "${version}",
   "name": "DeathLog",
-  "description": "Keeps track of the many embarrassing times you died",
+  "description": "Keeps track of the many embarrassing times you died.",
   "authors": [
+    "yuzicodes",
     "glisco"
   ],
   "contact": {

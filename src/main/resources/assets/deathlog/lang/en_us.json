@@ -2,9 +2,9 @@
   "deathlog.deathinfoproperty.coordinates": "Coordinates",
   "deathlog.deathinfoproperty.coordinates.value": [
     {"index": 0, "color": "red"},
-    " ",
+    {"text": " / ", "color": "gray"},
     {"index": 1, "color": "green"},
-    " ",
+    {"text": " / ", "color": "gray"},
     {"index": 2, "color": "aqua"}
   ],
   "deathlog.deathinfoproperty.dimension": "Dimension",
@@ -37,14 +37,14 @@
   "key.deathlog.death_screen": "Death Log Screen",
 
   "text.deathlog.action.restore": "Restore",
-  "text.deathlog.action.give_item.spawn": {"text": "Press Mouse 3 to spawn", "color": "gray"},
-  "text.deathlog.action.give_item.copy_give": {"text": "Press Mouse 3 to copy /give", "color": "gray"},
+  "text.deathlog.action.give_item.spawn": {"text": "Middle Click \n to spawn", "color": "yellow"},
+  "text.deathlog.action.give_item.copy_give": {"text": "Middle Click \n to copy /give", "color": "yellow"},
   "text.deathlog.action.delete": {"text": "Delete", "color": "red"},
 
   "text.deathlog.info.time_missing": "Time missing",
-  "text.deathlog.info.death_message_missing": "Death message missing",
+  "text.deathlog.info.death_message_missing": "Death Message missing",
 
-  "text.deathlog.death_list_title": "DeathLog - %s total",
+  "text.deathlog.death_list_title": "Deaths - %s total",
   "text.deathlog.death_info_loading": "Loading...",
   "text.deathlog.no_info_selected_hint": "Select a death info from\nthe list to get started",
 
