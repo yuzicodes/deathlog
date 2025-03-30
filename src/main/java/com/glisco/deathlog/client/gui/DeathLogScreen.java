@@ -100,7 +100,7 @@ public class DeathLogScreen extends BaseUIModelScreen<FlowLayout> {
         this.uiAdapter.rootComponent.childById(FlowLayout.class, "death-list").<FlowLayout>configure(deathList -> {
             deathList.clearChildren();
 
-            for (int i = 0; i < this.storage.getDeathInfoList().size(); i++) {
+            for (int i = this.storage.getDeathInfoList().size() - 1; i >=0; i--) {
                 final int infoIndex = i;
                 var deathInfo = this.storage.getDeathInfoList().get(infoIndex);
 
